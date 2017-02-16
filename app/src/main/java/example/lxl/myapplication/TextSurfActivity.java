@@ -1,5 +1,6 @@
 package example.lxl.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -76,6 +77,11 @@ public class TextSurfActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    protected Activity initActivity(Activity activity) {
+        return this;
     }
 
     private void show() {

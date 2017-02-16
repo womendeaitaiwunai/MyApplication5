@@ -1,9 +1,13 @@
 package example.lxl.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -11,7 +15,6 @@ import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -27,8 +30,11 @@ import com.zys.brokenview.BrokenView;
 
 import java.util.Random;
 
+import example.lxl.myapplication.activity.AnalIDCardNoActivity;
+import example.lxl.myapplication.activity.SimulationCodeActivity;
 import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.util.anima.ShapeRevealLoopSample;
+import example.lxl.myapplication.util.chicken.ChickenActivity;
 import su.levenetc.android.textsurface.TextSurface;
 
 public class MainActivity extends BaseActivity
@@ -40,6 +46,9 @@ public class MainActivity extends BaseActivity
     private BrokenView brokenView;
     private BrokenTouchListener listener;
     private TextSurface textSurface;
+
+
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +107,13 @@ public class MainActivity extends BaseActivity
                 show();
             }
         }, 1000);
+
+        fragmentManager=getSupportFragmentManager();
+    }
+
+    @Override
+    protected Activity initActivity(Activity activity) {
+        return this;
     }
 
     private void show() {
@@ -114,7 +130,20 @@ public class MainActivity extends BaseActivity
         isInit = true;
     }
 
+    /**
+     * 修改主页的界面
+     * @param chaneFragment 要修改的界面
+     */
+    private void changMainView(Fragment chaneFragment){
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_change,chaneFragment);
+        fragmentTransaction.commit();
+    }
 
+
+    /**
+     * 初始化爆炸菜单的信息
+     */
     private void initBoom() {
         int number = 3;
 
@@ -216,33 +245,31 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 菜单选择NavigationView的选择事件
+     * @param item NavigationView的item
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
-            //抓到了肉鸡
-            startActivity(new Intent(MainActivity.this,TestActivity.class));
-
+            //身份证扫描
+            startActivity(new Intent(MainActivity.this,AnalIDCardNoActivity.class));
         } else if (id == R.id.nav_gallery) {
-
+            //桌面小图标
+            startActivity(new Intent(MainActivity.this,SimulationCodeActivity.class));
         } else if (id == R.id.nav_slideshow) {
+            //肉鸡测试
+            startActivity(new Intent(MainActivity.this,ChickenActivity.class));
 
         } else if (id == R.id.nav_manage) {
 
@@ -251,7 +278,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
