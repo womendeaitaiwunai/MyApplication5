@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.idcard;
+package example.lxl.myapplication.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -31,6 +31,8 @@ import java.io.OutputStream;
 import java.text.ParseException;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.util.IDCardUtil;
+import example.lxl.myapplication.util.manager.CameraManager;
 
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback, Camera.PreviewCallback {

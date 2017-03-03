@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"/>
 
 
-    <example.lxl.myapplication.util.idcard.PreviewBorderView
+    <example.lxl.myapplication.widget.PreviewBorderView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/borderview"
         android:layout_width="wrap_content"

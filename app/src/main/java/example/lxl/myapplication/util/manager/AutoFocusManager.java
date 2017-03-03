@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.idcard;
+package example.lxl.myapplication.util.manager;
 
 import android.hardware.Camera;
 import android.os.AsyncTask;
@@ -36,11 +36,6 @@ public class AutoFocusManager implements Camera.AutoFocusCallback{
 
     @Override
     public synchronized void onAutoFocus(final boolean success, Camera theCamera) {
-//        if(success){
-//            camera.takePicture(null, null, myjpegCallback);
-//        }
-
-;
         focusing = false;
         autoFocusAgainLater();
     }
@@ -100,11 +95,9 @@ public class AutoFocusManager implements Camera.AutoFocusCallback{
         stopped = true;
         if (useAutoFocus) {
             cancelOutstandingTask();
-            // Doesn't hurt to call this even if not focusing
             try {
                 camera.cancelAutoFocus();
             } catch (RuntimeException re) {
-                // Have heard RuntimeException reported in Android 4.0.x+; continue?
                 Log.e(TAG, "Unexpected exception while cancelling focusing", re);
             }
         }
@@ -117,7 +110,6 @@ public class AutoFocusManager implements Camera.AutoFocusCallback{
             try {
                 Thread.sleep(AUTO_FOCUS_INTERVAL_MS);
             } catch (InterruptedException e) {
-                // continue
             }
             start();
             return null;

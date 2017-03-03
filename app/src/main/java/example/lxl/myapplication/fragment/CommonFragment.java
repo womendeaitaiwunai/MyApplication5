@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.chicken;
+package example.lxl.myapplication.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.RatingBar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.activity.DetailActivity;
+import example.lxl.myapplication.widget.DragLayout;
 
 /**
  * Created by xmuSistone on 2016/9/18.

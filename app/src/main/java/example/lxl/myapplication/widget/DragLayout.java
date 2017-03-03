@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.chicken;
+package example.lxl.myapplication.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

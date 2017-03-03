@@ -2,6 +2,7 @@ package example.lxl.myapplication.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 
 import example.lxl.myapplication.R;
 import example.lxl.myapplication.base.BaseActivity;
-import example.lxl.myapplication.util.idcard.CameraActivity;
 
 /**
  * Created by lxl on 2017/2/16.
@@ -26,6 +26,7 @@ public class AnalIDCardNoActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_id_card);
         Log.i("标志：","AnalIDCardNoActivity--》onCreate");
         initView();
+        Log.i(TAG,"哈哈哈");
     }
 
     private void initView() {
@@ -35,7 +36,7 @@ public class AnalIDCardNoActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    protected Activity initActivity(Activity activity) {
+    protected Activity initActivity() {
         Log.i("标志：","AnalIDCardNoActivity--》initActivity");
         return this;
     }

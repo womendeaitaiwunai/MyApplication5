@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name=".base.BaseApplication"
@@ -19,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TextSurfActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
@@ -29,13 +30,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+        <!--<activity android:name=".MainActivity"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"-->
+            <!--android:screenOrientation="landscape">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
         <activity android:name=".activity.SimulationCodeActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -45,17 +47,24 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"/>
 
-        <activity android:name=".util.idcard.CameraActivity"
+        <activity android:name=".activity.CameraActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 
-        <activity android:name=".util.chicken.ChickenActivity"
+        <activity android:name=".activity.ChickenActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 
-        <activity android:name=".util.chicken.DetailActivity"
+        <activity android:name=".activity.DetailActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+        <activity android:name=".activity.StudyRxJavaActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="landscape"/>
+
+
+
 
         <service
             android:name=".service.ClickAccessibilityService"

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import example.lxl.myapplication.TextSurfActivity;
+import example.lxl.myapplication.WelcomeActivity;
 
 /**
  * 开机自启动
@@ -21,7 +21,7 @@ public class BootupReceiver extends BroadcastReceiver {
  // TODO Auto-generated catch block
  e.printStackTrace();
  }
- Intent i = new Intent(context, TextSurfActivity.class);
+ Intent i = new Intent(context, WelcomeActivity.class);
  i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
  context.startActivity(i);
  

@@ -6,7 +6,7 @@
 
     <!--DragLayout要求所有子View的layout_gravity都居中显示-->
 
-    <example.lxl.myapplication.util.chicken.DragLayout
+    <example.lxl.myapplication.widget.DragLayout
         android:id="@+id/drag_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -129,7 +129,7 @@
 
         <!--2. 頂層可滑动的View-->
 
-        <example.lxl.myapplication.util.chicken.AspectRatioCardView
+        <example.lxl.myapplication.widget.AspectRatioCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -181,8 +181,8 @@
 
             </RelativeLayout>
 
-        </example.lxl.myapplication.util.chicken.AspectRatioCardView>
+        </example.lxl.myapplication.widget.AspectRatioCardView>
 
-    </example.lxl.myapplication.util.chicken.DragLayout>
+    </example.lxl.myapplication.widget.DragLayout>
 
 </FrameLayout>

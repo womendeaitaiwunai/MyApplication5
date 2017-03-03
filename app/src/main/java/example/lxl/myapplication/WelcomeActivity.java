@@ -3,7 +3,6 @@ package example.lxl.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -20,7 +19,7 @@ import su.levenetc.android.textsurface.TextSurface;
  * Created by lxl on 2016/10/27.
  */
 
-public class TextSurfActivity extends BaseActivity {
+public class WelcomeActivity extends BaseActivity {
     private TextSurface textSurface;
     private TextView go;
     int time =0;
@@ -28,6 +27,7 @@ public class TextSurfActivity extends BaseActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.text_surf);
+        Log.i("创建","WelcomeActivity-->onCreate");
         textSurface = (TextSurface) findViewById(R.id.text_surface);
         go= (TextView) findViewById(R.id.go);
 
@@ -57,7 +57,7 @@ public class TextSurfActivity extends BaseActivity {
             public void run() {
                 time=time+1;
                 if (time>10){
-                    TextSurfActivity.this.runOnUiThread(new Runnable() {
+                    WelcomeActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             go.setVisibility(View.VISIBLE);
@@ -72,7 +72,7 @@ public class TextSurfActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 timerTask.stopTimer();
-                startActivity(new Intent(TextSurfActivity.this,MainActivity.class));
+                startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
                 finish();
             }
         });
@@ -80,7 +80,7 @@ public class TextSurfActivity extends BaseActivity {
     }
 
     @Override
-    protected Activity initActivity(Activity activity) {
+    protected Activity initActivity() {
         return this;
     }
 

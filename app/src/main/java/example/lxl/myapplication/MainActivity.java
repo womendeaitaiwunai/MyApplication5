@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -32,9 +33,10 @@ import java.util.Random;
 
 import example.lxl.myapplication.activity.AnalIDCardNoActivity;
 import example.lxl.myapplication.activity.SimulationCodeActivity;
+import example.lxl.myapplication.activity.StudyRxJavaActivity;
 import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.util.anima.ShapeRevealLoopSample;
-import example.lxl.myapplication.util.chicken.ChickenActivity;
+import example.lxl.myapplication.activity.ChickenActivity;
 import su.levenetc.android.textsurface.TextSurface;
 
 public class MainActivity extends BaseActivity
@@ -109,10 +111,11 @@ public class MainActivity extends BaseActivity
         }, 1000);
 
         fragmentManager=getSupportFragmentManager();
+        Log.i(TAG,"heheheheheheheh");
     }
 
     @Override
-    protected Activity initActivity(Activity activity) {
+    protected Activity initActivity() {
         return this;
     }
 
@@ -272,9 +275,10 @@ public class MainActivity extends BaseActivity
             startActivity(new Intent(MainActivity.this,ChickenActivity.class));
 
         } else if (id == R.id.nav_manage) {
-
+            //RX学习
+            startActivity(new Intent(MainActivity.this, StudyRxJavaActivity.class));
         } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(MainActivity.this, StudyRxJavaActivity.class));
         } else if (id == R.id.nav_send) {
 
         }

@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.idcard;
+package example.lxl.myapplication.util.manager;
 
 import android.content.Context;
 import android.hardware.Camera;

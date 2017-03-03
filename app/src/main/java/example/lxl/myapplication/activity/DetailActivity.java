@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.chicken;
+package example.lxl.myapplication.activity;
 
 import android.os.Build;
 import android.os.Bundle;

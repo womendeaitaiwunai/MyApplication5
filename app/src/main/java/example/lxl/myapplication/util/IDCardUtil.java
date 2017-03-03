@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.idcard;
+package example.lxl.myapplication.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

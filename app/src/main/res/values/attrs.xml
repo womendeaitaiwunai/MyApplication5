@@ -14,4 +14,8 @@
         <attr name="bottomDragVisibleHeight" format="dimension" />
         <attr name="bototmExtraIndicatorHeight" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="TitleView">
+        <attr name="titleName" format="string|reference"/>
+    </declare-styleable>
 </resources>

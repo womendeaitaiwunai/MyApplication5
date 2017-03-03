@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.OutputStream;
@@ -22,12 +23,18 @@ public class ClickAccessibilityService extends BaseAccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         super.onAccessibilityEvent(event);
+        Toast.makeText(this, "进入了判断额", Toast.LENGTH_SHORT).show();
 
         if (!checkIsRun()){
-            Intent intent=new Intent();
-            intent.setComponent(new ComponentName("example.lxl.myapplication", "example.lxl.myapplication.TestActivity"));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            try{
+                Toast.makeText(this, "准确启动", Toast.LENGTH_SHORT).show();
+                Intent intent = this.getPackageManager().getLaunchIntentForPackage("example.lxl.myapplication.MainActivity");
+                startActivity(intent);
+            }catch(Exception e){
+                Toast.makeText(this, "没有安装", Toast.LENGTH_LONG).show();
+            }
+        }else {
+            Toast.makeText(this, "正在运行额", Toast.LENGTH_SHORT).show();
         }
 //        if (event.getEventType()==AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
 //                && event.getText().size()!=0&&event.getText().get(0).equals("点击了")){

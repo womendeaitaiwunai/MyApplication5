@@ -1,4 +1,4 @@
-package example.lxl.myapplication.util.chicken;
+package example.lxl.myapplication.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.fragment.CommonFragment;
+import example.lxl.myapplication.widget.CustPagerTransformerViewPage;
 
 
 /**
@@ -75,7 +77,7 @@ public class ChickenActivity extends FragmentActivity implements View.OnClickLis
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // 1. viewPager添加parallax效果，使用PageTransformer就足够了
-        viewPager.setPageTransformer(false, new CustPagerTransformer(this));
+        viewPager.setPageTransformer(false, new CustPagerTransformerViewPage(this));
 
         // 2. viewPager添加adapter
         for (int i = 0; i < 10; i++) {
