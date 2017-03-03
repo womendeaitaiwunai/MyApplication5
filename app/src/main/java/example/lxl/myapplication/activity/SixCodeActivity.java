@@ -11,6 +11,6 @@ import example.lxl.myapplication.base.BaseActivity;
 public class SixCodeActivity extends BaseActivity {
     @Override
     protected Activity initActivity() {
-        return null;
+        return this;
     }
 }

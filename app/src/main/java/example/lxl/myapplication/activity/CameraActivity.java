@@ -31,11 +31,12 @@ import java.io.OutputStream;
 import java.text.ParseException;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.util.IDCardUtil;
 import example.lxl.myapplication.util.manager.CameraManager;
 
 
-public class CameraActivity extends Activity implements SurfaceHolder.Callback, Camera.PreviewCallback {
+public class CameraActivity extends BaseActivity implements SurfaceHolder.Callback, Camera.PreviewCallback {
 
     private TessBaseAPI baseApi;
 
@@ -51,7 +52,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
     //    private ImageView iv_close;
 //    private View ErrorView;
     private int times = 0;
-    private Long opentime;
+    private Long openTime;
     private ImageView imageView;
     private IDCardUtil idCard;
 
@@ -66,19 +67,24 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
 
         idCard=new IDCardUtil();
 
-        opentime = System.currentTimeMillis();
+        openTime = System.currentTimeMillis();
         sdPath = Environment.getExternalStorageDirectory() + "/ayy/";
         try {
             copyAssetFile();
             baseApi = new TessBaseAPI();
 
+            //增加英文的训练词库
             baseApi.init(sdPath, "eng");
+            //增加白名单
             baseApi.setVariable("tessedit_char_whitelist", "0123456789Xx");
-//        baseApi.
         } catch (Exception e) {
             e.printStackTrace();
-//        }
         }
+    }
+
+    @Override
+    protected Activity initActivity() {
+        return this;
     }
 
     /**
@@ -103,8 +109,8 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
             @Override
             public void onClick(View v) {
                 long time = System.currentTimeMillis();// 摄像头 初始化 需要时间
-                if (time - opentime > 2000) {
-                    opentime = time;
+                if (time - openTime > 2000) {
+                    openTime = time;
                     if (!toggleLight) {
                         toggleLight = true;
                         tv_lightstate.setText("关闭闪关灯");
@@ -275,8 +281,6 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
         id = id.replace("o", "0");
         id = id.replace("O", "0");
         id = id.replace("U", "0");
-
-
         return id;
     }
 

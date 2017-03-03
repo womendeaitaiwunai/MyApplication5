@@ -28,12 +28,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.service.BaseAccessibilityService;
 
 /**
  * 桌面模拟按键
  */
-public class SimulationCodeActivity extends Activity implements View.OnTouchListener,View.OnClickListener {
+public class SimulationCodeActivity extends BaseActivity implements View.OnTouchListener,View.OnClickListener {
 
     private static final String TAG = "TestActivity";
 
@@ -50,6 +51,11 @@ public class SimulationCodeActivity extends Activity implements View.OnTouchList
         setContentView(R.layout.activity_sinulate_code);
         BaseAccessibilityService.getInstance().init(SimulationCodeActivity.this);
         initView();
+    }
+
+    @Override
+    protected Activity initActivity() {
+        return this;
     }
 
     private void initView() {

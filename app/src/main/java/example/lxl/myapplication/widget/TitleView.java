@@ -1,5 +1,6 @@
 package example.lxl.myapplication.widget;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -9,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import example.lxl.myapplication.R;
-import example.lxl.myapplication.base.BaseApplication;
 
 /**
  * Created by lxl on 2017/3/3.
@@ -47,7 +47,7 @@ public class TitleView extends LinearLayout implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.back:
-                BaseApplication.getActivityLists().get(0).finish();
+                ((Activity)this.getContext()).finish();
                 break;
         }
     }

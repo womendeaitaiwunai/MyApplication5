@@ -1,5 +1,6 @@
 package example.lxl.myapplication.activity;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,11 +17,12 @@ import android.widget.RatingBar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.base.BaseActivity;
 
 /**
  * Created by xmuSistone on 2016/9/19.
  */
-public class DetailActivity extends FragmentActivity implements View.OnClickListener{
+public class DetailActivity extends BaseActivity implements View.OnClickListener{
 
     public static final String EXTRA_IMAGE_URL = "detailImageUrl";
 
@@ -79,6 +81,11 @@ public class DetailActivity extends FragmentActivity implements View.OnClickList
         ViewCompat.setTransitionName(ratingBar, RATINGBAR_TRANSITION_NAME);
 
         dealListView();
+    }
+
+    @Override
+    protected Activity initActivity() {
+        return this;
     }
 
     private void dealListView() {

@@ -1,5 +1,6 @@
 package example.lxl.myapplication.activity;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import example.lxl.myapplication.R;
+import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.fragment.CommonFragment;
 import example.lxl.myapplication.widget.CustPagerTransformerViewPage;
 
@@ -33,7 +35,7 @@ import example.lxl.myapplication.widget.CustPagerTransformerViewPage;
 /**
  * Created by xmuSistone on 2016/9/18.
  */
-public class ChickenActivity extends FragmentActivity implements View.OnClickListener{
+public class ChickenActivity extends BaseActivity implements View.OnClickListener{
 
     private TextView indicatorTv;
     private View positionView;
@@ -67,6 +69,11 @@ public class ChickenActivity extends FragmentActivity implements View.OnClickLis
 
         // 3. 填充ViewPager
         fillViewPager();
+    }
+
+    @Override
+    protected Activity initActivity() {
+        return this;
     }
 
     /**

@@ -49,31 +49,27 @@
 
         <activity android:name=".activity.CameraActivity"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".activity.ChickenActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".activity.DetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".activity.StudyRxJavaActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"/>
 
 
-
-
         <service
             android:name=".service.ClickAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService"/>
             </intent-filter>
-
             <meta-data
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility"/>
