@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "example.lxl.myapplication"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,8 +24,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
     testCompile 'junit:junit:4.12'
     //爆炸菜单库
     compile 'com.nightonke:boommenu:1.0.9'
@@ -40,9 +40,14 @@ dependencies {
     //类似ViewPage的效果
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     //卡片布局
-    compile 'com.android.support:cardview-v7:24.2.1'
-    //RxJava
-    compile 'io.reactivex:rxjava:1.0.14'
-    //RxAndroid
-    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    //    //RxJava
+    //    compile 'io.reactivex:rxjava:1.0.14'
+    //    //RxAndroid
+    //    compile 'io.reactivex:rxandroid:1.0.1'
+    //luban仿照微信图片压缩算法
+    compile 'me.shaohui.advancedluban:library:1.3.5'
+    //RecycleView
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.3'
+    compile 'com.android.support:recyclerview-v7:23.2.0'
 }

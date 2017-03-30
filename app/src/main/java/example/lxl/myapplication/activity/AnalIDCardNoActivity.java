@@ -29,7 +29,7 @@ public class AnalIDCardNoActivity extends BaseActivity implements View.OnClickLi
         Log.i(TAG,"哈哈哈");
     }
 
-    private void initView() {
+    protected void initView() {
         result= (TextView) findViewById(R.id.id_card_result);
         findViewById(R.id.start_id_card).setOnClickListener(this);
         findViewById(R.id.back).setOnClickListener(this);

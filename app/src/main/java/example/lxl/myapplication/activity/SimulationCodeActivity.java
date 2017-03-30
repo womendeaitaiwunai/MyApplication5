@@ -58,7 +58,7 @@ public class SimulationCodeActivity extends BaseActivity implements View.OnTouch
         return this;
     }
 
-    private void initView() {
+    protected void initView() {
         mCreateWindowButton = (Button) findViewById(R.id.open_setting);
 
         mCreateWindowButton.setOnClickListener(this);

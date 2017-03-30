@@ -7,4 +7,7 @@
     <string name="action_settings">设置</string>
     <string name="start_id_card">识别身份证</string>
     <string name="id_card_result">识别到的身份证是:%1$s</string>
+
+    <string name="clock">检测我的闹钟的状态，之后，记得设置填相应的时间</string>
+    <string name="dingding">自动打卡上班</string>
 </resources>

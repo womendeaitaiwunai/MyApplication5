@@ -36,6 +36,12 @@ public class BaseAccessibilityService extends AccessibilityService {
         return mInstance;
     }
 
+
+    @Override
+    protected void onServiceConnected() {
+        super.onServiceConnected();
+    }
+
     /**
      * Check当前辅助服务是否启用
      *

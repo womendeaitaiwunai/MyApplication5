@@ -32,6 +32,7 @@ import com.zys.brokenview.BrokenView;
 import java.util.Random;
 
 import example.lxl.myapplication.activity.AnalIDCardNoActivity;
+import example.lxl.myapplication.activity.AutoClickDingDingActivity;
 import example.lxl.myapplication.activity.SimulationCodeActivity;
 import example.lxl.myapplication.activity.StudyRxJavaActivity;
 import example.lxl.myapplication.base.BaseActivity;
@@ -273,12 +274,11 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_slideshow) {
             //肉鸡测试
             startActivity(new Intent(MainActivity.this,ChickenActivity.class));
-
         } else if (id == R.id.nav_manage) {
             //RX学习
             startActivity(new Intent(MainActivity.this, StudyRxJavaActivity.class));
         } else if (id == R.id.nav_share) {
-            startActivity(new Intent(MainActivity.this, StudyRxJavaActivity.class));
+            startActivity(new Intent(MainActivity.this, AutoClickDingDingActivity.class));
         } else if (id == R.id.nav_send) {
 
         }
