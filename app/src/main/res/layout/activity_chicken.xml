@@ -14,9 +14,7 @@
         android:paddingEnd="48dp"
         android:paddingLeft="48dp"
         android:paddingRight="48dp"
-        android:paddingStart="48dp">
-
-    </android.support.v4.view.ViewPager>
+        android:paddingStart="48dp"/>
 
     <!--2. 底部的三个图标按钮-->
 
@@ -63,6 +61,7 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
+
     <!--4. 顶部的titleBar-->
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -106,6 +105,33 @@
                 android:background="@mipmap/close" />
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/select_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_alignTop="@+id/linearLayout">
+            <Button
+                android:id="@+id/xuantu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选图"/>
+
+            <Button
+                android:id="@+id/hualang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="画廊显示"/>
+
+            <Button
+                android:id="@+id/rouji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="肉鸡形式显示"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

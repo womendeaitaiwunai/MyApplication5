@@ -2,6 +2,7 @@ package example.lxl.myapplication.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.io.File;
 
 import example.lxl.myapplication.R;
 import example.lxl.myapplication.activity.DetailActivity;
@@ -36,7 +39,7 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
         View rootView = inflater.inflate(R.layout.fragment_common, null);
         DragLayout dragLayout = (DragLayout) rootView.findViewById(R.id.drag_layout);
         imageView = (ImageView) dragLayout.findViewById(R.id.image);
-        ImageLoader.getInstance().displayImage(imageUrl, imageView);
+        ImageLoader.getInstance().displayImage(Uri.fromFile(new File(imageUrl)).toString(), imageView);
         address1 = dragLayout.findViewById(R.id.address1);
         address2 = dragLayout.findViewById(R.id.address2);
         address3 = dragLayout.findViewById(R.id.address3);

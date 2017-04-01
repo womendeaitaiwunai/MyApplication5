@@ -1,6 +1,7 @@
 package example.lxl.myapplication.activity;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.io.File;
 
 import example.lxl.myapplication.R;
 import example.lxl.myapplication.base.BaseActivity;
@@ -70,7 +73,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         }
 
         String imageUrl = getIntent().getStringExtra(EXTRA_IMAGE_URL);
-        ImageLoader.getInstance().displayImage(imageUrl, imageView);
+        ImageLoader.getInstance().displayImage(Uri.fromFile(new File(imageUrl)).toString(), imageView);
 
         ViewCompat.setTransitionName(imageView, IMAGE_TRANSITION_NAME);
         ViewCompat.setTransitionName(address1, ADDRESS1_TRANSITION_NAME);

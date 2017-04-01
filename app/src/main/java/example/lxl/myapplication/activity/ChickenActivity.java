@@ -1,6 +1,7 @@
 package example.lxl.myapplication.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -9,10 +10,14 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -21,6 +26,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.yanzhenjie.album.Album;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -41,7 +47,9 @@ public class ChickenActivity extends BaseActivity implements View.OnClickListene
     private View positionView;
     private ViewPager viewPager;
     private List<CommonFragment> fragments = new ArrayList<>(); // 供ViewPager使用
-    private final String[] imageArray = {"assets://image1.jpg", "assets://image2.jpg", "assets://image3.jpg", "assets://image4.jpg", "assets://image5.jpg"};
+    private LinearLayout selectView;
+    ArrayList<String> imageArray;
+    //private final String[] imageArray = {"assets://image1.jpg", "assets://image2.jpg", "assets://image3.jpg", "assets://image4.jpg", "assets://image5.jpg"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +72,57 @@ public class ChickenActivity extends BaseActivity implements View.OnClickListene
         findViewById(R.id.chicken_back).setOnClickListener(this);
         dealStatusBar(); // 调整状态栏高度
 
-        // 2. 初始化ImageLoader
-        initImageLoader();
 
-        // 3. 填充ViewPager
-        fillViewPager();
+        selectView= (LinearLayout) findViewById(R.id.select_view);
+
+        findViewById(R.id.xuantu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Album.album(ChickenActivity.this)
+                        .requestCode(999) // 请求码，返回时onActivityResult()的第一个参数。
+//                        .toolBarColor(R.color.colorPrimary) // Toolbar 颜色，默认蓝色。
+//                        .statusBarColor(R.color.colorAccent) // StatusBar 颜色，默认蓝色。
+//                        .navigationBarColor(R.color.colorPrimary) // NavigationBar 颜色，默认黑色，建议使用默认。
+                        .title("图库") // 配置title。
+
+                        .selectCount(9) // 最多选择几张图片。
+                        .columnCount(2) // 相册展示列数，默认是2列。
+                        .camera(true) // 是否有拍照功能。
+                        .checkedList(imageArray) // 已经选择过得图片，相册会自动选中选过的图片，并计数。
+                        .start();
+            }
+        });
+
+        findViewById(R.id.hualang).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Album.gallery(ChickenActivity.this)
+                        .requestCode(666) // 请求码，返回时onActivityResult()的第一个参数。
+//                        .toolBarColor(android.R.color.holo_red_dark) // Toolbar 颜色，默认蓝色。
+//                        .statusBarColor(android.R.color.holo_red_dark) // StatusBar 颜色，默认蓝色。
+//                        .navigationBarColor(android.R.color.holo_red_dark) // NavigationBar 颜色，默认黑色，建议使用默认。
+
+                        .checkedList(imageArray) // 要预览的图片list。
+                        .currentPosition(1) // 预览的时候要显示list中的图片的index。
+                        .checkFunction(true) // 预览时是否有反选功能。
+                        .start();
+            }
+        });
+
+
+        findViewById(R.id.rouji).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectView.setVisibility(View.GONE);
+                // 2. 初始化ImageLoader
+                initImageLoader();
+                // 3. 填充ViewPager
+                fillViewPager();
+            }
+        });
+
+
     }
 
     @Override
@@ -86,6 +140,9 @@ public class ChickenActivity extends BaseActivity implements View.OnClickListene
         // 1. viewPager添加parallax效果，使用PageTransformer就足够了
         viewPager.setPageTransformer(false, new CustPagerTransformerViewPage(this));
 
+        for (String imgUrl:imageArray){
+            Log.i("选择图片的地址",imgUrl);
+        }
         // 2. viewPager添加adapter
         for (int i = 0; i < 10; i++) {
             // 预先准备10个fragment
@@ -96,7 +153,7 @@ public class ChickenActivity extends BaseActivity implements View.OnClickListene
             @Override
             public Fragment getItem(int position) {
                 CommonFragment fragment = fragments.get(position % 10);
-                fragment.bindData(imageArray[position % imageArray.length]);
+                fragment.bindData(imageArray.get(position % imageArray.size()));
                 return fragment;
             }
 
@@ -190,6 +247,19 @@ public class ChickenActivity extends BaseActivity implements View.OnClickListene
         // 2.单例ImageLoader类的初始化
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(config);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 999||requestCode==666) {
+            if (resultCode == RESULT_OK) { // Successfully.
+                // 不要质疑你的眼睛，就是这么简单。
+                imageArray = Album.parseResult(data);
+            } else if (resultCode == RESULT_CANCELED) { // User canceled.
+                // 用户取消了操作。
+                Toast.makeText(this, "点击了取消额", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
