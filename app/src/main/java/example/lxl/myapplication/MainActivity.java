@@ -33,8 +33,9 @@ import java.util.Random;
 
 import example.lxl.myapplication.activity.AnalIDCardNoActivity;
 import example.lxl.myapplication.activity.AutoClickDingDingActivity;
+import example.lxl.myapplication.activity.MineStudyActivity;
 import example.lxl.myapplication.activity.SimulationCodeActivity;
-import example.lxl.myapplication.activity.StudyRxJavaActivity;
+import example.lxl.myapplication.activity.StudyActivity;
 import example.lxl.myapplication.base.BaseActivity;
 import example.lxl.myapplication.util.anima.ShapeRevealLoopSample;
 import example.lxl.myapplication.activity.ChickenActivity;
@@ -276,7 +277,7 @@ public class MainActivity extends BaseActivity
             startActivity(new Intent(MainActivity.this,ChickenActivity.class));
         } else if (id == R.id.nav_manage) {
             //RX学习
-            startActivity(new Intent(MainActivity.this, StudyRxJavaActivity.class));
+            startActivity(new Intent(MainActivity.this, MineStudyActivity.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(MainActivity.this, AutoClickDingDingActivity.class));
         } else if (id == R.id.nav_send) {

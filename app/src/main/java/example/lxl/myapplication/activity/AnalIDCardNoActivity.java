@@ -2,7 +2,6 @@ package example.lxl.myapplication.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -45,7 +44,7 @@ public class AnalIDCardNoActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.start_id_card:
-                startActivityForResult(new Intent(AnalIDCardNoActivity.this, CameraActivity.class),0x22);
+                startActivityForResult(new Intent(AnalIDCardNoActivity.this, CameraIdCardActivity.class),0x22);
                 break;
             case R.id.back:
                 finish();

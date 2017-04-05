@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"/>
 
-        <activity android:name=".activity.CameraActivity"
+        <activity android:name=".activity.CameraIdCardActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"/>
 
@@ -59,13 +59,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".activity.StudyRxJavaActivity"
+        <activity android:name=".activity.MineStudyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activity.StudyActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"/>
 
         <activity android:name=".activity.AutoClickDingDingActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"/>
+
+        <activity android:name=".activity.CameraActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.yanzhenjie.album.AlbumActivity"

@@ -7,5 +7,5 @@
     <example.lxl.myapplication.widget.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleName="学习RxJava"/>
+        app:titleName="lonng学习"/>
 </LinearLayout>
