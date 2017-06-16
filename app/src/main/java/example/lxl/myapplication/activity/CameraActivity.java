@@ -1,5 +1,6 @@
 package example.lxl.myapplication.activity;
 
+import android.animation.TimeAnimator;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -59,7 +60,6 @@ public class CameraActivity extends BaseActivity  implements View.OnClickListene
                 photoView.setImageBitmap(BitmapFactory.decodeByteArray(jpeg,0,jpeg.length));
                 String path=getSDCardPath();
                 saveBitmap(path,jpeg);
-
             }
 
         });
